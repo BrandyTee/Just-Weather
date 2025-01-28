@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<body>
+
+<center>
+
+<br/>
+
+<h2 style="background-color: #487561; font-family: 'Walter Turncoat'; "> Searched Cities </h2>
+</center>
+
+{% for my_city in my_cities %}
+    <ul class="list-group">
+        <a href="{% url 'today' my_city %}" class="list-group-item list-group-item-action list-group-item-secondary">{{ my_city }}</a>
+    </ul>
+{% endfor %}
+
+<br><br>
+
+</body>
+
+
+
+{% endblock %}

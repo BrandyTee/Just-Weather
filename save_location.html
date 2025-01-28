@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<body>
+    
+    <center>
+    
+    <h1>Your Location</h1>
+    <h2 id="demo"> </h2>8
+    
+    
+    
+    </center>
+      
+  
+</html> 
+
+
+
+<script>
+    const x = document.getElementById("demo");
+    
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+    }
+    
+    window.addEventListener("load", getLocation);
+</script>
+
+</body>
+
+{% endblock %}

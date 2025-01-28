@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Info</title>
+    <script>
+        // Function to get geolocation data from the user's browser
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    // Send the latitude and longitude to the Django server via AJAX
+                    fetchWeatherData(latitude, longitude);
+                }, function(error) {
+                    alert("Error getting location: " + error.message);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Function to send the latitude and longitude to the Django backend via AJAX
+        function fetchWeatherData(latitude, longitude) {
+            fetch('/get_weather/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'), // Ensure CSRF token is included
+                },
+                body: JSON.stringify({ latitude: latitude, longitude: longitude })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // You can handle and display the weather data here
+                document.getElementById("weather-info").innerHTML = `
+                    <p>Current Temperature: ${data.weather.current.temp}°C</p>
+                    <p>Conditions: ${data.weather.current.conditions}</p>
+                `;
+            })
+            .catch(error => {
+                console.error("Error fetching weather data: ", error);
+            });
+        }
+
+        // Function to get the CSRF token for making POST requests
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie) {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Automatically fetch the location when the page loads
+        window.onload = function() {
+            getLocation();
+        };
+    </script>
+</head>
+<body>
+    <h1>Weather Information</h1>
+    <div id="weather-info">Fetching weather...</div>
+</body>
+</html>

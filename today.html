@@ -1,0 +1,382 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<body>
+
+<center>
+
+<br/>
+
+<h2> {{ resolvedAddress }} </h2>
+
+
+<br/>
+
+
+<div class="shadow p-3 mb-5 bg-body-dark rounded"> 
+    <h5 class="card-title" style="background-color: #487561; "> <center>Temperature </center> </h5>
+    <p class="card-text" weight="bold" >
+    
+        <p>{{ formatted }}</p>
+        <hr>  
+        
+        {{ condition }}
+        <hr>
+        
+        {% if "Sunny" in condition %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#487561 " class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Clear" in condition %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Cloudy" in condition %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#487561 " class="bi bi-cloudy-fill" viewBox="0 0 16 16">
+              <path d="M13.405 7.027a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 13H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Rain" in condition %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#487561" class="bi bi-cloud-rain-fill" viewBox="0 0 16 16">
+              <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Wind" in condition %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#487561" class="bi bi-wind" viewBox="0 0 16 16">
+              <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        {% elif "Partially cloudy" in condition %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#487561" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+              <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5z"/>
+              <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708zm1.734 3.374a2 2 0 1 1 3.296 2.198q.3.423.516.898a3 3 0 1 0-4.84-3.225q.529.017 1.028.129m4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377M14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+        {% endif %}
+        
+        <hr>
+        
+        Average Temp: {{ temp }}°C
+        <hr>
+        
+        Minimum Temp:   {{ mintemp }}°C
+        <hr>
+        
+        Maximum Temp:   {{ maxtemp }}°C
+        <hr>
+        
+       
+    </p>
+
+</div>
+
+
+
+<div class="shadow p-3 mb-5 bg-body-dark rounded">
+    <h5 class="card-title" style="background-color: #487561; "> <center> Conditions </center> </h5>
+    <p class="card-text" weight="bold" >
+    
+        <p>{{ formatted }}</p>
+        <hr>  
+        
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+          <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"/>
+        </svg> {{ rain }}%
+        <hr>
+        
+        Windspeed:   {{ windspeed }}
+        <hr>
+        
+        Wind Direction:   {{ winddir }}
+        <hr>
+        
+        Snow: {{ snow }} 
+        <hr>
+        
+        {{ description }}
+        <hr>
+        
+       
+    </p>
+
+</div>
+
+
+
+
+<div class="shadow p-3 mb-5 bg-body-dark rounded">
+    <h5 class="card-title" style="background-color: #487561; "> <center> Air Quality </center> </h5>
+    <p class="card-text" weight="bold" >
+    
+        <p>{{ formatted }}</p>
+        <hr>  
+        
+        {% if good %}
+            <center>
+            <div style="background: #00ff00; max-width:150px; text-align: center;"> 
+        	    <small>{{ city }} AQI:</small> 
+        	     <h1> {{ air_quality }} </h1>
+        	     <small> Good </small>
+            </div>
+            </center>
+        {% elif moderate %}
+            <center>
+            <div style="background: #ffff00; max-width:150px; text-align: center;"> 
+        	    <small>{{ city }} AQI:</small> 
+        	     <h1> {{ air_quality }} </h1>
+        	     <small> Moderate </small>
+            </div>
+            </center>
+        {% elif sensitive %}
+            <center>
+            <div style="background: #ff9900; max-width:150px; text-align: center;"> 
+        	    <small>{{ city }} AQI:</small> 
+        	     <h1> {{ air_quality }} </h1>
+        	     <small> Unhealthy for Sensitive Groups </small>
+            </div>
+            </center>
+        {% elif unhealthy %}
+            <center>
+            <div style="background: #ff3300; max-width:150px; text-align: center;"> 
+        	    <small>{{ city }} AQI:</small> 
+        	     <h1> {{ air_quality }} </h1>
+        	     <small> Unhealthy </small>
+            </div>
+            </center>
+        {% elif very %}
+            <center>
+            <div style="background: #990099; max-width:150px; text-align: center;"> 
+        	    <small>{{ city }} AQI:</small> 
+        	     <h1> {{ air_quality }} </h1>
+        	     <small> Very Unhealthy </small>
+            </div>
+            </center>
+        {% endif %}
+        
+        <hr>     
+       
+    </p>
+    
+    
+
+</div>
+
+
+
+<h2 style="background-color: #487561; font-family: 'Walter Turncoat'; "> By The Hour </h2>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+  
+    <div class="carousel-item active">
+      <div class="card text-center text-bg-dark mb-3" style="width: 22rem;">
+      <div class="card-body">
+        <center>
+        <h5 class="card-title">{{ first_hour_date }}</h5>
+        <hr>
+        <p class="card-text">{{ first_hour_conditions }}</p>
+        <hr>
+        {% if "Sunny" in first_hour_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Clear" in first_hour_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Cloudy" in first_hour_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloudy-fill" viewBox="0 0 16 16">
+              <path d="M13.405 7.027a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 13H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Rain" in first_hour_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-rain-fill" viewBox="0 0 16 16">
+              <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Wind" in first_hour_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-wind" viewBox="0 0 16 16">
+              <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        {% elif "Partially cloudy" in first_hour_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+              <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5z"/>
+              <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708zm1.734 3.374a2 2 0 1 1 3.296 2.198q.3.423.516.898a3 3 0 1 0-4.84-3.225q.529.017 1.028.129m4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377M14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+        {% endif %}
+        <hr>
+        
+        <p class="card-text"><strong>{{ first_hour_temp }}°C</strong></p>
+        <hr>
+        <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+          <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"/>
+        </svg> {{ first_hour_rains }}%</p>
+        <hr>
+        
+        </center>
+      </div>
+    </div>      
+    </div>
+    
+    {% for temp, conditions, rain, date in hours_weather %}
+    <div class="carousel-item">
+      <div class="card text-center text-bg-dark mb-3" style="width: 22rem;">
+      <div class="card-body">
+        <center>
+        <h5 class="card-title">{{ date }}</h5>
+        <hr>
+        <p class="card-text">{{ conditions }}</p>
+        <hr>
+        {% if "Sunny" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Clear" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Cloudy" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloudy-fill" viewBox="0 0 16 16">
+              <path d="M13.405 7.027a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 13H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Rain" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-rain-fill" viewBox="0 0 16 16">
+              <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Wind" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-wind" viewBox="0 0 16 16">
+              <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        {% elif "Partially cloudy" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+              <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5z"/>
+              <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708zm1.734 3.374a2 2 0 1 1 3.296 2.198q.3.423.516.898a3 3 0 1 0-4.84-3.225q.529.017 1.028.129m4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377M14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+        {% endif %}
+        <hr>
+        
+        <p class="card-text"><strong>{{ temp }}°C</strong></p>
+        <hr>
+        <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+          <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"/>
+        </svg> {{ rain }}%</p>
+        <hr>
+        
+        
+        </center>
+      </div>
+      </div>      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<br>
+
+
+<h2 style="background-color: #487561; font-family: 'Walter Turncoat'; "> 15 Day Weather Forecast </h2>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+  
+    <div class="carousel-item active">
+      <div class="card text-center text-bg-dark mb-3" style="width: 22rem;">
+      <div class="card-body">
+        <center>
+        <h5 class="card-title">{{ first_day_date }}</h5>
+        <hr>
+        <p class="card-text">{{ first_day_conditions }}</p>
+        <hr>
+        {% if "Sunny" in first_day_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Clear" in first_day_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Cloudy" in first_day_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloudy-fill" viewBox="0 0 16 16">
+              <path d="M13.405 7.027a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 13H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Rain" in first_day_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-rain-fill" viewBox="0 0 16 16">
+              <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Wind" in first_day_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-wind" viewBox="0 0 16 16">
+              <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        {% elif "Partially cloudy" in first_day_conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+              <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5z"/>
+              <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708zm1.734 3.374a2 2 0 1 1 3.296 2.198q.3.423.516.898a3 3 0 1 0-4.84-3.225q.529.017 1.028.129m4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377M14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+        {% endif %}
+        <hr>
+        
+        <p class="card-text"><strong>{{ first_day_max }}°C</strong> / {{ first_day_min }}°C</p>
+        <hr>
+        <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+          <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"/>
+        </svg> {{ first_day_rains }}%</p>
+        <hr>
+        
+        </center>
+      </div>
+    </div>      
+    </div>
+    
+    {% for min, max, conditions, rain, date in days_weather %}
+    <div class="carousel-item">
+      <div class="card text-center text-bg-dark mb-3" style="width: 22rem;">
+      <div class="card-body">
+        <center>
+        <h5 class="card-title">{{ date }}</h5>
+        <hr>
+        <p class="card-text">{{ conditions }}</p>
+        <hr>
+        {% if "Sunny" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Clear" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+              <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+            </svg>
+        {% elif "Cloudy" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloudy-fill" viewBox="0 0 16 16">
+              <path d="M13.405 7.027a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 13H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Rain" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-rain-fill" viewBox="0 0 16 16">
+              <path d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317m3 0a.5.5 0 0 1 .316.633l-1 3a.5.5 0 1 1-.948-.316l1-3a.5.5 0 0 1 .632-.317m.247-6.998a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973"/>
+            </svg>
+        {% elif "Wind" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-wind" viewBox="0 0 16 16">
+              <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+            </svg>
+        {% elif "Partially cloudy" in conditions %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-cloud-sun-fill" viewBox="0 0 16 16">
+              <path d="M11.473 11a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5z"/>
+              <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708zm1.734 3.374a2 2 0 1 1 3.296 2.198q.3.423.516.898a3 3 0 1 0-4.84-3.225q.529.017 1.028.129m4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377M14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+        {% endif %}
+        <hr>
+        
+        <p class="card-text"><strong>{{ max }}°C</strong> / {{ min }}°C</p>
+        <hr>
+        <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#487561" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+          <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13"/>
+        </svg> {{ rain }}%</p>
+        <hr>
+        
+        
+        </center>
+      </div>
+      </div>      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<br/>
+<br/>
+</center>
+</body>
+
+{% endblock %}
