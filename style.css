@@ -1,0 +1,178 @@
+
+
+h5 {
+  font-family: "Audiowide", sans-serif;
+  color: white;
+  font-size: 15px;
+}
+
+div.scroll-container {
+  background-color: black;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 5px;
+}
+
+div.scroll-container img {
+  padding: 5px;
+}
+
+.container,
+.div6 {
+  border: black;
+}
+
+
+.div6 {
+  display: inline-block;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+
+.modal-dialog.modal-dialog-centered.modal-dialog-scrollable {
+    background-color: black;
+}
+
+.modal-header {
+  background-color: #16bab2;
+  color: black;
+}
+
+.modal-body {
+  background-color: black;
+  color: white;
+}
+
+.modal-footer {
+  background-color: #16bab2;
+  color: white;
+}
+
+
+h6 { 
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 13px;
+}
+
+p { 
+    width: 100px;
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 13px;
+    
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.character {
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 13px;
+    color: white;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+li { 
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 15px;
+}
+
+img-container {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.half {
+    padding: 10x;
+    border: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between; /* this will add equal space between each image */
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+  }
+}
+
+a {
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 15px;
+}
+
+span {
+  font-family: "Comic Sans MS", cursive;
+  color: white;
+  font-size: 35px;
+}
+
+.btn-size {
+    width: 380px;
+    height: 300px;
+}
+
+button {
+    background: 'black';
+    border: 0;
+}
+
+h2 {
+  font-family: Impact, "Gill Sans",sans-serif;
+  color: white;
+  font-size: 30px;
+}
+
+h1 {
+  font-family: "Comic Sans MS", cursive;
+  color: white;
+  font-size: 30px;
+}
+
+h3 {
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 20px;
+}
+
+input { 
+    font-family: Impact, "Gill Sans",sans-serif;
+    font-size: 15px;    
+}
+
+
+.btn btn-dark {
+    background-color: black;
+    border-color: black;
+}
+
+body {
+    background-color: black;
+    color: white;
+} 
+
+
+
+
+
+
+
+
+
